@@ -27,6 +27,23 @@ public class BacktrackingNQueens {
         }
     }
 
+    public static void numberOfCounts(char board[][], int row) {
+        //base case
+        if(row == board.length){
+            count++;
+            return;
+        }
+
+        //column loop
+        for (int j = 0; j < board.length; j++) {
+            if (isSafe(board, row, j)) {
+                board[row][j] = 'Q';
+                numberOfCounts(board, row+1);  //function call
+                board[row][j] = 'X';    //backtracking step
+            }
+        }
+    }
+
     public static boolean isSafe(char board[][], int row, int col){
         //vertical up
         for(int i = row; i > 0; i --){
@@ -62,6 +79,8 @@ public class BacktrackingNQueens {
         System.out.println("*********************************");
     }
 
+    static int count = 0;
+
     public static void main(String[] args) {
         
         Scanner sc = new Scanner(System.in);
@@ -76,7 +95,10 @@ public class BacktrackingNQueens {
             }
         }
 
-        System.out.println("All possible solution of the placing the Queens is following: ");
-        nQueens(board, 0);
+        // System.out.println("All possible solution of the placing the Queens is following: ");
+        // nQueens(board, 0);
+
+        numberOfCounts(board, 0);
+        System.out.println("The total number of ways to solve the n queens is: "+count);
     }
 }
