@@ -80,6 +80,22 @@ public class LinkedListIntro {
         temp.next = newNode;
     }
 
+    public int removeFirst() {
+        if(size == 0){
+            System.out.println("LL is empty");
+            return Integer.MIN_VALUE;
+        } else if(size == 1) {
+            int value = head.data;
+            head = tail = null;
+            size = 0;
+            return value;
+        }
+        int value = head.data;
+        head = head.next;
+        size--;
+        return value;
+    }
+
     public static void main(String[] args) {
         LinkedListIntro ll = new LinkedListIntro();
         ll.printLinkedList();
@@ -93,5 +109,7 @@ public class LinkedListIntro {
         ll.add(4, 40);
         ll.printLinkedList();
         System.out.println(ll.size);
+        System.out.println(ll.removeFirst());
+        ll.printLinkedList();
     }
 }
