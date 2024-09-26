@@ -15,6 +15,7 @@ public class ArrayListSwap {
         list.add(3);
         list.add(6);
 
+        System.out.println(list);
         swap(list, 1, 3);
         System.out.println(list);
     }
