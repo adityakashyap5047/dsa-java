@@ -140,6 +140,24 @@ public class LinkedListIntro {
         return -1;
     }
 
+    public int helper(Node head, int key){      //T.C - O(n)  S.C - O(n)
+        if (head == null) {
+            return -1;
+        }
+        if(head.data == key){
+            return 0;
+        }
+        int idx = helper(head.next, key);
+        if (idx == -1) {
+            return -1;
+        }
+        return idx+1;
+    }
+
+    public int findKeyByRecursion(int key){
+        return helper(head, key);
+    }
+
     public static void main(String[] args) {
         LinkedListIntro ll = new LinkedListIntro();
         ll.printLinkedList();
@@ -159,5 +177,6 @@ public class LinkedListIntro {
         ll.printLinkedList();
         System.out.println(ll.size);
         System.out.println("The key is found at index: "+ll.findKey(10));
+        System.out.println("The key is found at index: "+ll.findKeyByRecursion(10));
     }
 }
