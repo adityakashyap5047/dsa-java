@@ -13,11 +13,13 @@ public class LinkedListIntro {
 
     public static Node head;
     public static Node tail;
+    public static int size;
 
     public void addFirst(int data) {        // T.C - O(1)
 
         // step1 = create new node
         Node newNode = new Node(data);
+        size++;
 
         if (head == null) {
             head = tail = newNode;
@@ -34,6 +36,7 @@ public class LinkedListIntro {
     public void addLast(int data) {             // T.C - O(1)
 
         Node newNode = new Node(data);
+        size++;
 
         if (head == null) {
             head = tail = newNode;
@@ -63,6 +66,7 @@ public class LinkedListIntro {
             return;
         }
         Node newNode = new Node(data);
+        size++;
         Node temp = head;
         int i = 0;
 
@@ -88,5 +92,6 @@ public class LinkedListIntro {
         ll.add(2, 10);
         ll.add(4, 40);
         ll.printLinkedList();
+        System.out.println(ll.size);
     }
 }
