@@ -31,9 +31,24 @@ public class LinkedListIntro {
         head = newNode;
     }
 
+    public void addLast(int data){
+
+        Node newNode = new Node(data);
+
+        if(head == null){
+            head = tail = newNode;
+            return;
+        }
+
+        tail.next = newNode;
+        tail = newNode;
+    }
+
     public static void main(String[] args) {
         LinkedListIntro ll = new LinkedListIntro();
         ll.addFirst(1);
         ll.addFirst(4);
+        ll.addLast(3);
+        ll.addLast(12);
     }
 }
