@@ -118,6 +118,28 @@ public class LinkedListIntro {
         return value;
     }
 
+    public int findKey(int key){        // T.C - O(n)
+        Node temp = head;
+        /* 
+            for(int i = 0; i < size; i++){
+                if(temp.data == key){
+                    return i;
+                }
+                temp = temp.next;
+            }
+        */
+        //other way
+        int j = 0;
+        while (temp != null) {
+            if(temp.data == key){
+                return j;
+            }
+            temp = temp.next;
+            j++;
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
         LinkedListIntro ll = new LinkedListIntro();
         ll.printLinkedList();
@@ -136,5 +158,6 @@ public class LinkedListIntro {
         System.out.println(ll.removeLast());
         ll.printLinkedList();
         System.out.println(ll.size);
+        System.out.println("The key is found at index: "+ll.findKey(10));
     }
 }
