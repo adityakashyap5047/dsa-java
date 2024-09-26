@@ -158,6 +158,20 @@ public class LinkedListIntro {
         return helper(head, key);
     }
 
+    public void reverseLinkedList() {
+        Node prev = null;
+        Node curr = tail = head;
+        Node next;
+
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+    }
+
     public static void main(String[] args) {
         LinkedListIntro ll = new LinkedListIntro();
         ll.printLinkedList();
@@ -178,5 +192,7 @@ public class LinkedListIntro {
         System.out.println(ll.size);
         System.out.println("The key is found at index: "+ll.findKey(10));
         System.out.println("The key is found at index: "+ll.findKeyByRecursion(10));
+        ll.reverseLinkedList();
+        ll.printLinkedList();
     }
 }
