@@ -158,7 +158,7 @@ public class LinkedListIntro {
         return helper(head, key);
     }
 
-    public void reverseLinkedList() {
+    public void reverseLinkedList() {           //T.C - O(n)
         Node prev = null;
         Node curr = tail = head;
         Node next;
@@ -170,6 +170,31 @@ public class LinkedListIntro {
             curr = next;
         }
         head = prev;
+    }
+
+    public void removeFromEnd(int n){
+        //calculate size
+        int sz = 0;
+        Node temp = head;
+        while (temp != null) {
+            temp = temp.next;
+            sz++;
+        }
+
+        if(n == sz){
+            head = head.next;       //removeFirst
+            return;
+        }
+
+        //Reach to just before the deleting element From start
+        int i = 1;
+        int iToFind = sz-n;
+        Node prev = head;
+        while (i < iToFind) {
+            prev = prev.next;
+            i++;
+        }
+        prev.next = prev.next.next;
     }
 
     public static void main(String[] args) {
@@ -193,6 +218,8 @@ public class LinkedListIntro {
         System.out.println("The key is found at index: "+ll.findKey(10));
         System.out.println("The key is found at index: "+ll.findKeyByRecursion(10));
         ll.reverseLinkedList();
+        ll.printLinkedList();
+        ll.removeFromEnd(2);
         ll.printLinkedList();
     }
 }
