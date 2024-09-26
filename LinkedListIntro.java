@@ -96,6 +96,28 @@ public class LinkedListIntro {
         return value;
     }
 
+    public int removeLast() {
+        if(size == 0){
+            System.out.println("LL is empty");
+            return Integer.MIN_VALUE;
+        } else if(size == 1) {
+            int value = head.data;
+            head = tail = null;
+            size = 0;
+            return value;
+        } 
+        //prev: i = size-2
+        Node temp = head;
+        for(int i = 0; i < size - 2; i ++){
+            temp = temp.next;
+        }
+        int value = temp.next.data;     //tail.data
+        temp.next = null;
+        tail = temp;
+        size--;
+        return value;
+    }
+
     public static void main(String[] args) {
         LinkedListIntro ll = new LinkedListIntro();
         ll.printLinkedList();
@@ -111,5 +133,8 @@ public class LinkedListIntro {
         System.out.println(ll.size);
         System.out.println(ll.removeFirst());
         ll.printLinkedList();
+        System.out.println(ll.removeLast());
+        ll.printLinkedList();
+        System.out.println(ll.size);
     }
 }
