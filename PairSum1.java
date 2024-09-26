@@ -12,6 +12,20 @@ public class PairSum1 {
         }
         return false;
     }
+
+    public static boolean pairsum1TwoPointerApproach(ArrayList<Integer> mylist, int target){
+        int lp = 0, rp = mylist.size()-1;
+        while (lp < rp) {
+            if(mylist.get(lp) + mylist.get(rp) == target){
+                return true;
+            } else if(mylist.get(lp) + mylist.get(rp) < target) {
+                lp++;
+            } else {
+                rp--;
+            }
+        }
+        return false;
+    }
     
     public static void main(String[] args) {
         ArrayList<Integer> mylist = new ArrayList<>();
@@ -21,7 +35,10 @@ public class PairSum1 {
         mylist.add(4);
         mylist.add(5);
         mylist.add(6);
+
         int target = 5;
+
         System.out.println(pairsum1(mylist, target));
+        System.out.println(pairsum1TwoPointerApproach(mylist, target));
     }
 }
