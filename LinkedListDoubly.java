@@ -57,6 +57,13 @@ public class LinkedListDoubly {
             return Integer.MIN_VALUE;
         }
 
+        if (size == 1) {
+            int value = head.data;
+            head = tail = null;
+            size--;
+            return value;
+        }
+
         int value = head.data;
         head = head.next;
         head.prev = null;
@@ -70,6 +77,13 @@ public class LinkedListDoubly {
 
         if(head == null){
             return Integer.MIN_VALUE;
+        }
+
+        if (size == 1) {
+            int value = head.data;
+            head = tail = null;
+            size--;
+            return value;
         }
 
         int value = tail.data;
