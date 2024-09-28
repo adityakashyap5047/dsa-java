@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class StackIntro {
+public class StackIntroAL {
     
     static class Stack {
     
