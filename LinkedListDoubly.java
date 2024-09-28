@@ -50,6 +50,20 @@ public class LinkedListDoubly {
         tail = newNode;
     }
 
+    //removeFirst
+    public int removeFirst(){
+        
+        if(head == null){
+            return Integer.MIN_VALUE;
+        }
+
+        int value = head.data;
+        head = head.next;
+        head.prev = null;
+        size--;
+        return value;
+    }
+
     //print 
     public void printDLL() {
         Node temp = head;
@@ -61,6 +75,7 @@ public class LinkedListDoubly {
         */
 
         //another method
+        System.out.print("null<->");
         while (temp != null) {
             System.out.print(temp.data+"<->");
             temp = temp.next;
@@ -78,6 +93,9 @@ public class LinkedListDoubly {
         System.out.println("The size of the Doubly LinkedList is: "+size);
         dll.addLast(8);
         dll.addLast(9);
+        dll.printDLL();
+        System.out.println("The size of the Doubly LinkedList is: "+size);
+        System.out.println(dll.removeFirst());
         dll.printDLL();
         System.out.println("The size of the Doubly LinkedList is: "+size);
     }
