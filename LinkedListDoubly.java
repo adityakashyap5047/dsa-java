@@ -64,6 +64,21 @@ public class LinkedListDoubly {
         return value;
     }
 
+    //removeLast
+
+    public int removeLast(){
+
+        if(head == null){
+            return Integer.MIN_VALUE;
+        }
+
+        int value = tail.data;
+        tail = tail.prev;
+        tail.next = null;
+        size--;
+        return value;
+    }
+
     //print 
     public void printDLL() {
         Node temp = head;
@@ -96,6 +111,9 @@ public class LinkedListDoubly {
         dll.printDLL();
         System.out.println("The size of the Doubly LinkedList is: "+size);
         System.out.println(dll.removeFirst());
+        dll.printDLL();
+        System.out.println("The size of the Doubly LinkedList is: "+size);
+        System.out.println(dll.removeLast());
         dll.printDLL();
         System.out.println("The size of the Doubly LinkedList is: "+size);
     }
