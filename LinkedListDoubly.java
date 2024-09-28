@@ -34,10 +34,51 @@ public class LinkedListDoubly {
         head = newNode; 
     }
 
+    //addLast
+    public void addLast(int data){
+
+        Node newNode = new Node(data);
+        size++;
+
+        if(head == null){
+            head = tail = newNode;
+            return;
+        }
+
+        tail.next = newNode;
+        newNode.prev = tail;
+        tail = newNode;
+    }
+
+    //print 
+    public void printDLL() {
+        Node temp = head;
+        //One method
+
+        /*  for(int i = 0; i < size; i++){
+        **      System.out.print(temp.data+"<->");
+        **  }
+        */
+
+        //another method
+        while (temp != null) {
+            System.out.print(temp.data+"<->");
+            temp = temp.next;
+        }
+        System.out.println("null");
+    }
+
 
     public static void main(String[] args) {
         
         LinkedListDoubly dll = new LinkedListDoubly();
-
+        dll.addFirst(1);
+        dll.addFirst(2);
+        dll.printDLL();
+        System.out.println("The size of the Doubly LinkedList is: "+size);
+        dll.addLast(8);
+        dll.addLast(9);
+        dll.printDLL();
+        System.out.println("The size of the Doubly LinkedList is: "+size);
     }
 }
