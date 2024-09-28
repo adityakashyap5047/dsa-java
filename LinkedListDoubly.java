@@ -93,6 +93,22 @@ public class LinkedListDoubly {
         return value;
     }
 
+    public void reverse(){
+        Node curr = head;
+        Node prev = null;
+        Node next;
+
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            curr.prev = next;
+
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+    }
+
     //print 
     public void printDLL() {
         Node temp = head;
@@ -130,5 +146,7 @@ public class LinkedListDoubly {
         System.out.println(dll.removeLast());
         dll.printDLL();
         System.out.println("The size of the Doubly LinkedList is: "+size);
+        dll.reverse();
+        dll.printDLL();
     }
 }
