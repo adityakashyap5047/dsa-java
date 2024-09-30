@@ -32,7 +32,6 @@ public class StackParantheses {
                     s.pop();
                     break;
                 default:
-                    // Ignore other characters
                     break;
             }
         }
