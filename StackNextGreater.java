@@ -25,4 +25,10 @@ public class StackNextGreater {
             System.out.print(nextGreaterArr[i] + " ");
         }
     }
+
+    //next greater right
+    //next greater left
+    //next smaller right
+    //next smaller right
+    //next smaller left
 }
