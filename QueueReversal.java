@@ -2,7 +2,7 @@ import java.util.*;;
 
 public class QueueReversal {
 
-    public static void reverseQueue(Queue<Integer> q){
+    public static void reverse(Queue<Integer> q){
         Stack<Integer> s = new Stack<>();
         while (!q.isEmpty()) {
             s.push(q.remove());
@@ -20,7 +20,7 @@ public class QueueReversal {
         q.add(4);
         q.add(5);
 
-        reverseQueue(q);
+        reverse(q);
 
         while (!q.isEmpty()) {
             System.out.print(q.peek() + " ");
