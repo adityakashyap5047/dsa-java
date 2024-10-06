@@ -4,13 +4,13 @@ public class QueueInterleave2Halves {
 
     public static void interLeave(Queue<Integer> q){
         int size = q.size();
-        Queue<Integer> first = new LinkedList<>();
+        Queue<Integer> firstHalf = new LinkedList<>();
         
         for (int i = 0; i < size/2; i++) {
-            first.add(q.remove());
+            firstHalf.add(q.remove());
         }
-        while (!first.isEmpty()) {
-            q.add(first.remove());
+        while (!firstHalf.isEmpty()) {
+            q.add(firstHalf.remove());
             q.add(q.remove());
         }
     }
