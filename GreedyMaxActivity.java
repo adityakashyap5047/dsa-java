@@ -2,10 +2,20 @@ import java.util.*;
 
 public class GreedyMaxActivity{
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {    //T.C - O(n)
         
         int start[] = {1, 3, 0, 5, 8, 5};
         int end[] = {2, 4, 6, 7, 9, 9};
+
+        //sorting the activity according to end time if they are not
+        int activities[][] = new int[start.length][3];
+        for(int i = 0; i < start.length; i++){
+            activities[i][0] = i;
+            activities[i][1] = start[i];
+            activities[i][2] = end[i];
+        }
+
+        Arrays.sort(activities, Comparator.comparingDouble(o -> o[2]));
 
         //end time basis sorted
         int maxAct = 0;
