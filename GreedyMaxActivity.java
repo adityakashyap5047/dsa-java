@@ -17,9 +17,15 @@ public class GreedyMaxActivity{
         int lastEnd = end[0];
 
         
-        /*The error in your code lies in the condition used to select activities. Specifically, the condition if (end[i - 1] <= start[i]) is incorrect. This condition compares the end time of the previous activity in the list with the start time of the current activity, which is not the correct way to determine if the current activity can be selected.
-
-        Instead, you should compare the end time of the last selected activity with the start time of the current activity. To fix this, you need to keep track of the end time of the last selected activity.*/
+        /*The error in your code lies in the condition used to select activities. 
+            Specifically, the condition if (end[i - 1] <= start[i]) is incorrect. 
+                This condition compares the end time of the previous activity in the list 
+                with the start time of the current activity, 
+                which is not the correct way to determine if the current activity can be selected.
+            Instead, you should compare the end time of the last selected activity 
+                with the start time of the current activity. 
+                To fix this, you need to keep track of the end time of the last selected activity.
+        */
 
 
         for(int i = 1; i<end.length; i++){
@@ -34,7 +40,7 @@ public class GreedyMaxActivity{
 
         System.out.println("max activities is : "+ maxAct);
         for(int i = 0; i < ans.size(); i++){
-            System.out.print(ans.get(i)+" ");
+            System.out.print("A"+ans.get(i)+" ");
         }
     }
 }
