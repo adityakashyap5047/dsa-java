@@ -56,7 +56,7 @@ public class BTHeightOfTree {
          *          / \   / \
          *         4   5 6   7
          * 
-         */
+        */
 
         Node newRoot = new Node(1);
         newRoot.left = new Node(2);
