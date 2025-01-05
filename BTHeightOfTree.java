@@ -47,5 +47,25 @@ public class BTHeightOfTree {
         Node root = tree.buildTree(nodes);
 
         System.out.println(tree.height(root));
+
+        /* 
+         *  
+         *              1
+         *            /   \
+         *           2     3
+         *          / \   / \
+         *         4   5 6   7
+         * 
+         */
+
+        Node newRoot = new Node(1);
+        newRoot.left = new Node(2);
+        newRoot.right = new Node(3);
+        newRoot.left.left = new Node(4);
+        newRoot.left.right = new Node(5);
+        newRoot.right.left = new Node(6);
+        newRoot.right.right = new Node(7);
+
+        System.out.println(tree.height(newRoot));
     }
 }
