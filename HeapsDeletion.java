@@ -37,6 +37,10 @@ public class HeapsDeletion {
             return arr.get(0);
         }
 
+        public boolean isEmpty(){
+            return arr.size() == 0;
+        }
+
         private void heapify(int idx){
             int leftIdx = 2 * idx + 1;
             int rightIdx = 2 * idx + 2;
@@ -93,8 +97,10 @@ public class HeapsDeletion {
 
         hp.print();
         System.out.println();
-        System.out.println(hp.remove());
-        hp.print();
+        while (!hp.isEmpty()) {
+            System.out.println(hp.peek());
+            hp.remove();
+        }
     }
 
 }
