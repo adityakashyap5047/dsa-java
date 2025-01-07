@@ -81,7 +81,7 @@ public class BSTConvertToBalancedBST {
          * (EXPECTED BST)
         */
 
-        Node balancedRoot = balancedBST(sortedList, 0, sortedList.size()-1);
-        preOrder(balancedRoot);
+        root = balancedBST(sortedList, 0, sortedList.size()-1);
+        preOrder(root);
     }
 }
