@@ -32,6 +32,10 @@ public class HeapsJava {
                 System.out.print(arr.get(i)+" ");
             }
         }
+
+        public int peek(){
+            return arr.get(0);
+        }
     }
 
     public static void main(String[] args) {
@@ -44,5 +48,7 @@ public class HeapsJava {
         hp.add(1);
 
         hp.print();
+        System.out.println();
+        System.out.println(hp.peek());
     }
 }
