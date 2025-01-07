@@ -44,7 +44,7 @@ public class BSTFromSortedArray {
          *    5     11
          *   / \    / \ 
          *  3   6  10  12
-         * 
+         * (EXPECTED BST)
         */
 
         Node root = balancedBST(arr, 0, arr.length - 1);
