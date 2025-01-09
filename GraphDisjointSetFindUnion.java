@@ -14,7 +14,7 @@ public class GraphDisjointSetFindUnion {
         if (x == par[x]) {
             return x;
         }
-        return find(par[x]);
+        return par[x] = find(par[x]);   //path compression optimization
     }
 
     public static void union(int a, int b){
