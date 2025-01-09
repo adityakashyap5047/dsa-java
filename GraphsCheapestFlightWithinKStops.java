@@ -72,9 +72,10 @@ public class GraphsCheapestFlightWithinKStops {
                 int v = e.dest;
                 int wt = e.wt;
 
-                if (dist[u] != Integer.MAX_VALUE && dist[u]+wt < dist[v] && curr.stops <= k) {
-                    dist[v] = dist[u]+wt;
-                    q.add(new Info(v, dist[v], curr.stops+1));
+                if (curr.cost+wt < dist[v] && curr.stops <= k) {// here instead of dist[u] we use curr.cost because, 
+                    dist[v] = curr.cost+wt;//dist[u] tracks minimum cost to reach at vertex u from source                    
+                    q.add(new Info(v, dist[v], curr.stops+1));//via minimum vertex cost but curr.cost tracks 
+                                    //the minimum cost through the vertex which is currently visited
                 }
             }
         }
