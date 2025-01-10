@@ -19,12 +19,39 @@ public class DPClimbingStairs {
         dp[n] = climbingWaysMem(n - 1, dp) + climbingWaysMem(n - 2, dp);
         return dp[n];
     }
+
+    public static int climbingWaysTab(int n){
+        int dp[] = new int[n+1];
+
+        //initialize
+        dp[0] = 1;
+        dp[1] = 1;
+
+        //meaning -> climb(n) = dp[n]
+
+        //filling
+        for (int i = 2; i < dp.length; i++) {
+            dp[i] = dp[i-1] + dp[i-2];
+        }
+
+        return dp[n];
+    }
     
     public static void main(String[] args) {
         int n = 5;
+
+        //T.C - (2^n)
+        
+        //recursion
         System.out.println(climbingWays(n));
 
+        //T.C - O(n)
+
+        //memoization
         int dp[] = new int[n+1];
         System.out.println(climbingWaysMem(n, dp));
+
+        //tabulation
+        System.out.println(climbingWaysTab(n));
     }
 }
