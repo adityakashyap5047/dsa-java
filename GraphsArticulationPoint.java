@@ -33,7 +33,7 @@ public class GraphsArticulationPoint {
         graph[4].add(new Edge(4, 3));
     }
 
-    public static void dfs(ArrayList<Edge> graph[], int curr, int par, int dt[], int low[], int time, boolean vis[]){
+    public static void dfs(ArrayList<Edge> graph[], int curr, int par, int dt[], int low[], int time, boolean vis[], boolean ap[]){
         vis[curr] = true;
         dt[curr] = low[curr] = ++time;
         int children = 0;
@@ -47,17 +47,17 @@ public class GraphsArticulationPoint {
             } else if (vis[neigh]) {
                 low[curr] = Math.min(low[curr], dt[neigh]);
             } else {
-                dfs(graph, neigh, curr, dt, low, time, vis);
+                dfs(graph, neigh, curr, dt, low, time, vis, ap);
                 low[curr] = Math.min(low[curr], low[neigh]);
                 if(par != -1 && dt[curr] <= low[neigh]){
-                    System.out.println("Ap : "+curr);
+                    ap[curr] = true;
                 }
                 children++; // if node is unvisited then it is children 
             }
         }
 
         if (par == -1 && children > 1) {
-            System.out.println("Ap : "+curr);
+            ap[curr] = true;
         }
     }
 
@@ -66,11 +66,18 @@ public class GraphsArticulationPoint {
         int low[] = new int[V];
         int time = 0;
         boolean vis[] = new boolean[V];
+        boolean ap[] = new boolean[V];
 
         for(int i = 0; i < V; i++){
             if (!vis[i]) {
                 //dfs()
-                dfs(graph, i, -1, dt, low, time, vis);
+                dfs(graph, i, -1, dt, low, time, vis, ap);
+            }
+        }
+
+        for (int i = 0; i < ap.length; i++) {
+            if (ap[i]) {
+                System.out.println("Ap : "+i);
             }
         }
 
