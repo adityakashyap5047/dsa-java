@@ -53,5 +53,8 @@ public class DPClimbingStairs {
 
         //tabulation
         System.out.println(climbingWaysTab(n));
+
+        //To initialize an array with a specific value we can
+        // Arrays.fill(array_name, value);
     }
 }
