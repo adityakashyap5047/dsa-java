@@ -1,6 +1,6 @@
 public class DPRodCutting {
 
-    public static int rodCutting(int price[], int lenght[], int rodLength){
+    public static int rodCutting(int price[], int length[], int rodLength){
         int n = price.length;
 
         int dp[][] = new int[n+1][rodLength+1];
@@ -18,7 +18,7 @@ public class DPRodCutting {
         for (int i = 1; i < n+1; i++) {
             for (int j = 1; j < rodLength+1; j++) {
                 int currPrice = price[i-1];
-                int currLength = lenght[i-1];
+                int currLength = length[i-1];
                 //valid
                 if(currLength <= j){
                     dp[i][j] = Math.max(currPrice + dp[i][j - currLength], dp[i-1][j]);
