@@ -43,6 +43,36 @@ public class DP01Knapsack {
         
         return dp[n][w];
     }
+
+    public static int knapsackTab(int val[], int wt[], int n, int W){
+        int dp[][] = new int[n+1][W+1];
+
+        for (int i = 0; i < dp.length; i++) {
+            for (int j = 0; j < dp[0].length; j++) {
+                if (i == 0 || j == 0) {
+                    dp[i][j] = 0;
+                }
+            }
+        }
+
+        for (int i = 1; i < dp.length; i++) {
+            for (int j = 1; j < dp[0].length; j++) {
+                int v = val[i-1]; //value of curr item      //(taking i-1) because, value of 1st item exist in 0 index of value array
+                int w = wt[i-1];  //wt. of curr item  //(taking i-1) because, wt. of 1st exist in 0 idx of wt array
+
+                if (w <= j) {       //valid
+                    int incProfit = v + dp[i-1][j-w];
+                    int excProfit = dp[i-1][j];
+                    dp[i][j] = Math.max(incProfit, excProfit);
+                } else {        //invalid
+                    int excProfit = dp[i-1][j];
+                    dp[i][j] = excProfit;
+                }
+            }
+        }
+
+        return dp[n][W];
+    }
     
     public static void main(String[] args) {
         int val[] = {15, 14, 10, 45, 30};
@@ -63,5 +93,8 @@ public class DP01Knapsack {
             Arrays.fill(dp[i], -1);
         }
         System.out.println(knapsackMem(val, wt, w, val.length, dp));
+
+        //Tabulation
+        System.out.println(knapsackTab(val, wt, val.length, w));
     }
 }
