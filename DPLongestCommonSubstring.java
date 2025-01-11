@@ -1,4 +1,4 @@
-public class DPLowestCommonSubstring {
+public class DPLongestCommonSubstring {
     
     public static int lcs(String str1, String str2){
         int n = str1.length();

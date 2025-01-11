@@ -1,4 +1,4 @@
-public class DPLowestCommonSubsequence {
+public class DPLongestCommonSubsequence {
     
     public static int lcs(String str1, String str2, int n, int m){
 
