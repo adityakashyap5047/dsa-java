@@ -46,7 +46,8 @@ public class DPLongestIncreasingSubsequence {
         int sortedNumbers[] = new int[set.size()];
         int idx = 0;
         for (int num : set) {
-            sortedNumbers[idx++] = num;
+            sortedNumbers[idx] = num;
+            idx++;
         }
 
         System.out.println(lis(numbers, sortedNumbers));
