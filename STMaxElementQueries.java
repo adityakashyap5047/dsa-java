@@ -6,31 +6,31 @@ public class STMaxElementQueries {
         tree = new int[4*n];
     }
 
-    public static int buildST(int numbers[], int STIdx, int st, int end){
+    public static int buildST(int numbers[], int stIdx, int st, int end){
         if (st == end) {
-            tree[STIdx] = numbers[st];
+            tree[stIdx] = numbers[st];
             return numbers[st];
         }
 
         int mid = (st + end)/2;
 
-        int leftSubtree = buildST(numbers, 2 * STIdx + 1, st, mid); // left subtree -> 2*i + 1
-        int rightSubtree = buildST(numbers, 2* STIdx + 2, mid+1, end); // right subtree -> 2*i + 2
+        int leftSubtree = buildST(numbers, 2 * stIdx + 1, st, mid); // left subtree -> 2*i + 1
+        int rightSubtree = buildST(numbers, 2* stIdx + 2, mid+1, end); // right subtree -> 2*i + 2
 
-        tree[STIdx] = Math.max(leftSubtree, rightSubtree);
+        tree[stIdx] = Math.max(leftSubtree, rightSubtree);
 
-        return tree[STIdx];
+        return tree[stIdx];
     }
 
-    public static int getMaxUtil(int STIdx, int si, int sj, int qi, int qj){
+    public static int getMaxUtil(int stIdx, int si, int sj, int qi, int qj){
         if (qj <= si || qi >= sj) {  // non overlapping
             return Integer.MIN_VALUE;
         } else if (si >= qi && sj <= qj) {  //complete overlap
-            return tree[STIdx];
+            return tree[stIdx];
         } else {
             int mid = (si + sj)/2;
-            int leftSubtree = getMaxUtil(2 * STIdx + 1, si, mid, qi, qj);
-            int rightSubtree = getMaxUtil(2 * STIdx + 2, mid+1, sj, qi, qj);
+            int leftSubtree = getMaxUtil(2 * stIdx + 1, si, mid, qi, qj);
+            int rightSubtree = getMaxUtil(2 * stIdx + 2, mid+1, sj, qi, qj);
 
             return Math.max(leftSubtree, rightSubtree);
         }
@@ -42,16 +42,18 @@ public class STMaxElementQueries {
         return getMaxUtil(0, 0, n-1, qi, qj);
     }
 
-    public static void updateUtil(int STIdx, int si, int sj, int idx, int newVal){
+    public static void updateUtil(int stIdx, int si, int sj, int idx, int newVal){
         if (idx > sj || idx < si) {
             return;
         }
 
-        tree[STIdx] = Math.max(tree[STIdx], newVal);
-        if (si != sj) {     //non-leaf
+        if (si == sj) {
+            tree[stIdx] = newVal;
+        } else{ //non-leaf
             int mid = (si + sj)/2;
-            updateUtil(2 * STIdx + 1, si, mid, idx, newVal); //left
-            updateUtil(2 * STIdx + 2, mid+1, sj, idx, newVal); //right
+            updateUtil(2 * stIdx + 1, si, mid, idx, newVal); //left
+            updateUtil(2 * stIdx + 2, mid+1, sj, idx, newVal); //right
+            tree[stIdx] = Math.max(tree[2 * stIdx + 1], tree[2 * stIdx + 2]);
         }
     }
 
@@ -77,7 +79,7 @@ public class STMaxElementQueries {
 
         System.out.println(getMax(numbers, 0, 3));
 
-        update(numbers, 1, 18);
+        update(numbers, 4, 7);
         for (int i = 0; i < tree.length; i++) {
             System.out.print(tree[i]+" ");
         }
