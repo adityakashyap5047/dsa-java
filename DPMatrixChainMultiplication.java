@@ -43,6 +43,33 @@ public class DPMatrixChainMultiplication {
 
         return dp[i][j] = minCost;
     }
+
+    public static int mcmTab(int arr[]){
+        int dp[][] = new int[arr.length][arr.length];
+
+        int n = dp.length;
+
+        for (int i = 0; i < dp.length; i++) {
+            dp[i][i] = 0;
+        }
+
+        //filling -> bottom-up
+        for(int len = 2; len <= n-1; len++){
+            for (int i = 1; i <= n - len; i++) {
+                int j = i + len -1;
+                dp[i][j] = Integer.MAX_VALUE;
+                for (int k = i; k < j; k++) {
+                    int cost1 = dp[i][k];
+                    int cost2 = dp[k+1][j];
+                    int cost3 = arr[i-1] * arr[k] * arr[j];
+
+                    dp[i][j] = Math.min(dp[i][j], cost1+cost2+cost3);
+                }
+            }
+        }
+
+        return dp[1][n-1];
+    }
     
     public static void main(String[] args) {
         //recursion
@@ -55,5 +82,7 @@ public class DPMatrixChainMultiplication {
             Arrays.fill(dp[i], -1);
         }
         System.out.println(mcmMem(arr, 1, arr.length-1, dp));
+
+        System.out.println(mcmTab(arr));
     }
 }
