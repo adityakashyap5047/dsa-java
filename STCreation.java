@@ -41,6 +41,27 @@ public class STCreation {
         return getSumUtil(0, 0, n-1, qi, qj); // si = 0 && sj = n-1 because the root stores the sum of subarray with the length of 0 to n-1
     }
 
+    public static void updateUtil(int STIdx, int si, int sj, int idx, int diff){
+        if (idx > sj || idx < si) {
+            return;
+        }
+
+        tree[STIdx] += diff;
+        if (si != sj) {     //non-leaf
+            int mid = (si + sj)/2;
+            updateUtil(2 * STIdx + 1, si, mid, idx, diff); //left
+            updateUtil(2 * STIdx + 2, mid+1, sj, idx, diff); //right
+        }
+    }
+
+    public static void update(int arr[], int idx, int newVal){
+        int n = arr.length;
+        int diff = newVal - arr[idx];
+        arr[idx] = newVal;
+
+        updateUtil(0, 0, n-1, idx, diff);
+    }
+
     public static void main(String[] args) {
         int numbers[] = {1, 2, 3, 4, 5, 6, 7, 8};
         int n = numbers.length; 
@@ -54,5 +75,11 @@ public class STCreation {
         System.out.println();
 
         System.out.println(getSum(numbers, 2, 5));
+
+        update(numbers, 2, 2);
+        for (int i = 0; i < tree.length; i++) {
+            System.out.print(tree[i]+" ");
+        }
+        System.out.println();
     }
 }
