@@ -30,7 +30,7 @@ public class DPCatalansNumber {
         return dp[n] = ans;
     }
 
-    public static int catalanTab(int n){
+    public static int catalanTab(int n){    //T.C - O(n^2)
         int dp[] = new int[n+1];
 
         dp[0] = 1;
