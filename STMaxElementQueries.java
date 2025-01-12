@@ -42,6 +42,26 @@ public class STMaxElementQueries {
         return getMaxUtil(0, 0, n-1, qi, qj);
     }
 
+    public static void updateUtil(int STIdx, int si, int sj, int idx, int newVal){
+        if (idx > sj || idx < si) {
+            return;
+        }
+
+        tree[STIdx] = Math.max(tree[STIdx], newVal);
+        if (si != sj) {     //non-leaf
+            int mid = (si + sj)/2;
+            updateUtil(2 * STIdx + 1, si, mid, idx, newVal); //left
+            updateUtil(2 * STIdx + 2, mid+1, sj, idx, newVal); //right
+        }
+    }
+
+    public static void update(int numbers[], int idx, int newVal){
+        int n = numbers.length;
+        numbers[idx] = newVal;
+
+        updateUtil(0, 0, n-1, idx, newVal);
+    }
+
     public static void main(String[] args) {
         int numbers[] = {6, 8, -1, 2, 17, 1, 3, 2, 4};
         int n = numbers.length;
@@ -56,5 +76,11 @@ public class STMaxElementQueries {
         System.out.println();
 
         System.out.println(getMax(numbers, 0, 3));
+
+        update(numbers, 1, 18);
+        for (int i = 0; i < tree.length; i++) {
+            System.out.print(tree[i]+" ");
+        }
+        System.out.println();
     }
 }
